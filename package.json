@@ -1,0 +1,25 @@
+{
+  "name": "name-intl",
+  "version": "1.0.0",
+  "description": "A JS helper for formatting names of persons according to locale.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "person",
+    "human",
+    "name",
+    "converstion",
+    "order",
+    "localization",
+    "intl",
+    "namelocalization",
+    "internationalize"
+  ],
+  "author": "Avneet Sunner",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
