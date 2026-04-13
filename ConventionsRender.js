@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var conventions = require('./conventions');
 
 exports.format = function(conventionDefinition, prefix, personal, middle, last, suffix)
@@ -6,8 +5,10 @@ exports.format = function(conventionDefinition, prefix, personal, middle, last, 
     //assign values   
     let name = "";
     let conventionDefinitionWithName = assignValues(conventionDefinition, prefix, personal, middle, last, suffix);
-    
-    _.forEach(_.orderBy(conventionDefinitionWithName, ['Order'], ['asc']), function(item) {
+
+    conventionDefinitionWithName.sort((a,b) => { return a.Order > b.Order? 1 : -1 })
+
+    conventionDefinitionWithName.forEach(item => {
         var value = item.Value
         if(value){
             name += item.BeforeSeparator + value + item.AfterSeparator;
@@ -33,19 +34,20 @@ exports.format = function(conventionDefinition, prefix, personal, middle, last, 
 
 assignValues = function(conventionDefinition, prefix, personal, middle, last, suffix){
     let conventionDefinitionWithName = conventionDefinition;
-    var preffixConvention = _.find(conventionDefinitionWithName, x=> x.Type == conventions.NameTypes.Preffix);
+
+    let preffixConvention = conventionDefinitionWithName.find((x) => x.Type === conventions.NameTypes.Preffix);
     if (preffixConvention)  preffixConvention['Value'] = prefix;
 
-    var personelConvention = _.find(conventionDefinitionWithName, x=> x.Type == conventions.NameTypes.Personal);
+    var personelConvention = conventionDefinitionWithName.find((x) => x.Type == conventions.NameTypes.Personal);
     if (personelConvention)  personelConvention['Value'] = personal;
 
-    var middleConvention = _.find(conventionDefinitionWithName, x=> x.Type == conventions.NameTypes.Middle);
+    var middleConvention = conventionDefinitionWithName.find((x) => x.Type == conventions.NameTypes.Middle);
     if (middleConvention)  middleConvention['Value'] = middle;
 
-    var familyConvention = _.find(conventionDefinitionWithName, x=> x.Type == conventions.NameTypes.Family);
+    var familyConvention = conventionDefinitionWithName.find((x) => x.Type == conventions.NameTypes.Family);
     if (familyConvention)  familyConvention['Value'] = last;
 
-    var suffixConvention = _.find(conventionDefinitionWithName, x=> x.Type == conventions.NameTypes.Suffix);
+    var suffixConvention = conventionDefinitionWithName.find((x) => x.Type == conventions.NameTypes.Suffix);
     if (suffixConvention)  suffixConvention['Value'] = suffix;
     return conventionDefinitionWithName;
 }

@@ -20,6 +20,5 @@
   "author": "Avneet Sunner",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.11"
   }
 }
