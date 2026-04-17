@@ -2,6 +2,14 @@
   "name": "name-intl",
   "version": "3.0.0",
   "description": "A JS helper for formatting names of persons according to locale.",
+  "homepage": "https://github.com/avneetsunner/name-intl",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avneetsunner/name-intl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avneetsunner/name-intl/issues"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./index.d.ts",

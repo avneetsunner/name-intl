@@ -7,8 +7,9 @@ export interface IDefinitions {
 export function getStandardDefinitions(): IDefinitions {
     return {
     'en-US' : western,
-    'en-PH' : eastern,
+    'en-PH' : western,
     'en-CA' : western,
+    'zh-TW' : eastern,
     'zh-CN' : [
         { Order: 0, Type: NameTypes.Preffix,  BeforeSeparator: "", AfterSeparator: "", MissingNameRule: MissingNameRules.DontShowEmptySpace, MissingNameRuleCustom: null },
         { Order: 2, Type: NameTypes.Personal, BeforeSeparator: "", AfterSeparator: "", MissingNameRule: MissingNameRules.DontShowEmptySpace, MissingNameRuleCustom: null },
