@@ -1,10 +1,25 @@
 {
   "name": "name-intl",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "A JS helper for formatting names of persons according to locale.",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
   "scripts": {
-    "test": "node --test"
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --tsconfig tsconfig.build.json",
+    "test": "node --test --import tsx ./src/index.test.ts",
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
     "person",
@@ -21,7 +36,10 @@
   "type": "module",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^25.6.0",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   }
 }
